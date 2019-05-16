@@ -7,29 +7,31 @@ client.on('ready', () => {
 //CHANNEL ID 
 client.login('NTc3NDIzMzU4MzI5NzQ5NTA1.XNk13A.E0t1Z_wLSc7VgzGACFIFXeA_EO4')
 
-// const {
-// 	prefix,
-// 	token,
-// } = require('./config.json');
+// For more details on beginner bots: https://www.devdungeon.com/content/javascript-discord-bot-tutorial
 
-// DR PHIL QUOTES
+//DR PHIL QUOTES
 client.on('message', msg => {
   if (msg.content === '!phil_me_up') {
     msg.reply(random())
   }
   if (msg.content === '!all_commands') { 
 
-    msg.reply(" All listed commands: \n !phil_me_up: Dr Phil spits out some real facts \n !join_the_ranch: Dr Phil joins the voice channel \n !leave_ranch: Dr Phil leaves the voice channel \n !sicko_mode: Dr Phil joins voice chat and goes sicko mode \n !cursed_phil: Dr Phil shows you a cursed image of him ")
+    msg.reply(``` All listed commands: \n
+     !phil_me_up: Dr Phil spits out some real facts \n 
+     !join_the_ranch: Dr Phil joins the voice channel \n 
+     !leave_ranch: Dr Phil leaves the voice channel \n 
+     !sicko_mode: Dr Phil joins voice chat and goes sicko mode \n
+      !cursed_phil: Dr Phil shows you a cursed image of him ```)
   }
 })
 
-// function to generate a random quote 
+//Function to generate a random quote 
 function random() { 
     num = Math.floor(Math.random() * 25)
     return quotes[num]; 
 }
 
-// Array of Dr Phil Quotes 
+//Array of Dr Phil Quotes 
 quotes = ["Don’t make me put your head in a blender!",
             "This ain’t my first rodeo son!", 
             "No matter how flat you make a pancake- its got two sides!", 
@@ -57,7 +59,7 @@ quotes = ["Don’t make me put your head in a blender!",
             "Common sense needs to be more common."
 ] 
 
-// GETTING PHIL_BOT TO REACT TO A MESSAGE 
+//GETTING PHIL_BOT TO REACT TO A MESSAGE 
 client.on('message', (receivedMessage) => {
   if (receivedMessage.author == client.user) { // Prevent bot from responding to its own messages
       return
@@ -73,6 +75,7 @@ client.on('message', (receivedMessage) => {
       // Everytime someone says why 
     } else if (mes.includes(messageWhy)) { 
        receivedMessage.react("🅱");
+      //Custom Emojis 
       // Everytime someone says nathan 
     } else if (mes.includes(messageN)) { 
       receivedMessage.react(client.emojis.get("523818737917493248"));
@@ -82,7 +85,7 @@ client.on('message', (receivedMessage) => {
     }
 }) 
 
-
+//For more info: https://discord.js.org/#/docs/main/stable/topics/voice
 // GETTING PHIL BOT TO HOP IN CHAT AND SAY VOICE COMMANDS 
 client.on('message', message => {
   // Voice only works in guilds, if the message does not come from a guild,
@@ -109,7 +112,7 @@ client.on('message', message => {
   if(message.content === '!sicko_mode') { 
 
       message.member.voiceChannel.join().then(connection => {
-        //This makes it go green 
+        //Youtube Option; Have not tried this
         //const ytdl = require('ytdl-core');
         //connection.playOpusStream(ytdl('https://www.youtube.com/watch?v=ZlAU_w7-Xp8',{ filter: 'audioonly' }));
   
